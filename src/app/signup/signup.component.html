@@ -1,0 +1,88 @@
+
+
+<section class=" bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+
+                <div class="form-outline mb-4">
+                    <div *ngIf="errorMessageName" class="text-danger not-match-text">*{{errorMessageName}}</div>
+                    <input type="text"
+                    [(ngModel)]="input1Value" [ngClass]="{'error-border': isInput1Empty}"
+                     class="form-control scan-text" [ngClass]="(errorName)" type="text" 
+                    [(ngModel)]="nameInput"
+                    (click)="OnClickInput()"    
+                    />
+                  <label class="form-label" for="form3Example1cg">Your Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <div *ngIf="errorMessageEmail" class="text-danger not-match-text">*{{errorMessageEmail}}</div>
+                    <input type="email"
+                    [(ngModel)]="input2Value" [ngClass]="{'error-border': isInput2Empty}"
+                     class="form-control scan-text"
+                      (click)="OnClickInputEmail()"
+                     [ngClass]="(errorEmail)" type="text" 
+                    [(ngModel)]="emailInput"/>
+                  <label class="form-label" for="form3Example3cg">Your Email</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <div *ngIf="errorMessagePassword"
+                    
+                     class="text-danger not-match-text">*{{errorMessagePassword}}</div>
+                    <input type="password" 
+                    [(ngModel)]="input3Value" [ngClass]="{'error-border': isInput3Empty}"
+                    [(ngModel)]="passwordInput"
+                    [ngClass]="errorpassword"
+                    (click)="OnClickInputPassword()"
+                    (input)="checkIfSame()"
+                     class="form-control scan-text" />
+                    <label class="form-label" for="form3Example4cg">Password</label>
+                  </div>
+
+                <div class="form-outline mb-4">
+                    <div *ngIf="isSame === false" class="text-danger not-match-text">*Passwords do not match</div>
+                    <input type="password" [(ngModel)]="passwordInputRepeat" class="form-control scan-text"
+                        [ngClass]="match"
+                        [ngClass]="errorpasswordMatch"
+                        (click)="OnClickInputPasswordMatch()"
+                      (input)="checkIfSame()" />
+                    <label class="form-label">Repeat your password</label>
+                    
+                  </div>
+                <div *ngIf="erroragree" class="form-check d-flex  text-danger not-match-text">*{{erroragree}}</div>
+                <div class="form-check d-flex justify-content-center mb-5">
+                  
+                  <input class="form-check-input me-2" type="checkbox" (click)="OnClickInputAgree()" [(ngModel)]="isChecked" id="form2Example3cg" />
+                  <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                  </label>
+                </div>
+                <div *ngIf="errorMessage" class="form-check d-flex justify-content-center mb-5 not-match-text text-danger">
+                  {{errorMessage}}
+                  <a href="/signup">refresh</a>
+                </div>
+                
+                <div class="d-flex justify-content-center">
+                  <button type="button"
+                    (click)="register()"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,135 @@
+<div class="start_bar">
+    <div class="skil_bar">
+        <div class="pass">
+            <div class="bar_wrap">
+                <div class="bar">
+                    <div class="inside7"></div>
+                </div>
+            </div>   
+            <div class="bar_wrap">
+                <div class="bar">
+                    <div class="inside8"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pass">
+            <div class="bar_wrap">
+                <div class="bar">
+                    <div class="inside5"></div>
+                </div>
+            </div>   
+            <div class="bar_wrap">
+                <div class="bar">
+                    <div class="inside6"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pass">
+            <div class="bar_wrap">
+                <div class="bar">
+                    <div class="inside3"></div>
+                </div>
+            </div>   
+            <div class="bar_wrap">
+                <div class="bar">
+                    <div class="inside4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pass">
+            <div class="bar_wrap">
+                <div class="bar">
+                    <div class="inside1"></div>
+                </div>
+            </div>   
+            <div class="bar_wrap">
+                <div class="bar">
+                    <div class="inside2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Text-home">
+        <h6>Detect. Protect. Secure</h6>
+        <span>
+            Explore the web confidently with SafeSiteDetect. We identify and expose scam sites in real time, ensuring your online experience is secure. Your safety is our priority – welcome to a scam-free digital journey!    </span>
+    </div>
+    </div>
+    <div class="chick_home_bar">
+        <div class="chick_home_input">
+            <div class="chick_home_title">
+                <h3>Real-Time URL</h3>
+            </div>
+            <div class="d-flex">
+                <input
+                    type="text"
+                    [ngClass]="{ 'scan-text-error': !isUrl }"
+                    class="form-control scan-text"
+                    type="text"
+                    placeholder="Enter a URL: www.example.com"
+                    [(ngModel)]="textInput"
+                    (input)="checkUrl()"
+                    (blur)="checkUrl()"
+                    (focus)="clearTimer()"
+                    #urlInput
+                />
+                <button type="submit" class="btn scan-btn btn-primary" (click)="displayText()">SCAN</button>
+                
+            </div>
+            <div class="text-danger text-error-empty"
+             [ngClass]="(disply_none)"
+             *ngIf="displayTextMessage">{{ displayTextMessage }}</div>
+    
+             <div class="load d-flex justify-content-center" *ngIf="isLoading">
+                <span class="loader"></span>
+              </div>
+            <div class="report-bar" *ngIf="responseData">
+                <div class="report-head">
+                    <div class="left-head" [ngClass]="(color_tyoe)">
+                        <i [ngClass]="(icon_tyoe)"></i>
+                        {{ responseData.data.description }}
+                    </div>
+                    <div class="right-head">
+                        <a class="nav-link Reanalyze" href="#">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            Reanalyze
+                        </a>
+                        <a class="nav-link Reanalyze" href="#">
+                            <i class="fa-solid fa-hard-drive"></i>
+                            Detailed Report
+                        </a>
+                    </div>
+                </div>
+                <div class="report-body">
+                    <div class="info-bar-one ">
+                        <div class="d-flex">
+                            <p>{{ responseData.data.url }}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p>{{ responseData.data.hostname }}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p>{{ responseData.data.country }}</p>
+                        </div>
+                        
+                    </div>
+                    <div class="info-bar-two">
+                        <div class="d-flex">
+                            <p>{{ responseData.data.ip_address }}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p [ngClass]="(color_onl)"> <i [ngClass]="(icon_onl)"></i>
+                                Online</p>
+                        </div>
+                        <div class="d-flex">
+                            <p class="text-success"> <i class="fa-regular fa-circle-check"></i>
+                                Verified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="more-info">
+        
+    </div>

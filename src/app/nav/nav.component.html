@@ -1,0 +1,44 @@
+<div class="back" *ngIf="!isLoginPage() && NavShow">
+    <div class="container-fluid sticky-top">
+        <div class="container">
+            <div class="navbar navbar-expand-lg navbar-dark p-0">
+                <a href="" class="navbar-brand">
+                    <h1 class="p-0 logo">S</h1>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <div class="navbar-nav ms-auto">
+                        <div *ngFor="let data of navData">
+                            <a href="" class="nav-item nav-link" [routerLink]="[data.routerLink]" 
+                            routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact:true}">
+                                <span>{{data.label}}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <button class="login-btn">
+                        <span class="login-text"
+                        (click)="NavHidd()"
+                        routerLink="/login">Log In</span>
+                    </button>
+                    <button class="signup-btn">
+                        <span class="signup-text"
+                        
+                        routerLink="/signup">Sign Up</span>
+                    </button>
+                </div>
+                <button class="bars" (click)="toggleNavbar()"><i class="fa-solid fa-bars"></i></button>                
+                <div *ngIf="!show">
+                    <div class="headdin-nav">
+                        <div *ngFor="let data of navData">
+                            <a href="" class="nav-item nav-link" [routerLink]="[data.routerLink]" 
+                            routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact:true}">
+                                <span>{{data.label}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
