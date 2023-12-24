@@ -26,7 +26,7 @@ export class NavComponent implements OnInit{
         this.updateNavVisibility();
       }
     });
-    throw new Error('Method not implemented.');
+    
   }
   updateNavVisibility() {
     // Check the current route and update NavShow accordingly

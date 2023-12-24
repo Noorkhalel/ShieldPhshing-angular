@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -27,16 +28,17 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     QuickcheckhomeComponent,
     SignupComponent,
     TermsOfServiceComponent,
+    DashboardComponent,
+    LoginComponent
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 .section-one{
     background-color: #4285F4;
+    height: 100vh;
 }
 .card-login {
     display: flex;
@@ -37,4 +38,8 @@ input::placeholder {
 }
 .facebook-btn{
     background-color: #3B5998;
+}
+.text-mute{
+    color: white;
+    
 }

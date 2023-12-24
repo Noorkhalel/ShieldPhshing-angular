@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -25,7 +26,10 @@ export class SignupComponent {
   errorMessagePassword: string='';
   match: string = '';
   errorpasswordMatch: string='';
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) { }
   errorData: { error: string } | undefined;
   ///
   input1Value: string = '';
@@ -67,8 +71,8 @@ export class SignupComponent {
           this.http.post<JSON>(this.apiUrl, requestBody, { responseType: 'json' })
             .subscribe(
               (response) => {
-                console.log('Response:', response);
                 this.responseData = response;
+                this.router.navigate(["/login"]);
               },
               (error) => {
                 console.error('Error:', error);

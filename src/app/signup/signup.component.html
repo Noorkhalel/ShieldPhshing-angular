@@ -70,11 +70,16 @@
                   <a href="/signup">refresh</a>
                 </div>
                 
-                <div class="d-flex justify-content-center">
-                  <button type="button"
-                    (click)="register()"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
-                </div>
+                <button class="login-btn all-btn" type="submit"
+                (click)="register()"
+                >Register</button>
+  
+              <hr class="my-4">
+  
+              <button class="all-btn google-btn mb-2"
+                type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
+              <button class="all-btn facebook-btn mb-2"
+                type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
                     class="fw-bold text-body"><u>Login here</u></a></p>
 

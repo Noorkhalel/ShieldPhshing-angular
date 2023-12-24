@@ -6,6 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { QuickcheckhomeComponent } from './quickcheckhome/quickcheckhome.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch: 'full'},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'queckcheckhome',component: QuickcheckhomeComponent},
   {path:'about',component: AboutComponent},
   {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent}
+  {path:'signup',component:SignupComponent},
+  {path:'dashboard',component:DashboardComponent}
 ];
 
 @NgModule({
