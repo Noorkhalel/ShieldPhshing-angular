@@ -49,12 +49,28 @@ export class LoginComponent implements OnInit{
   private deCode(t : string){
     return JSON.parse(atob(t.split(".")[1]));
   }
-
+  private pass: string = '';
+  errorData: string ='';
   handleLogin(resp:any){
     if(resp){
-      const payLoad = this.deCode(resp.credential);
-      // sessionStorage.setItem("loginedInUser", JSON.stringify(payLoad));
-      console.log(payLoad.name)
+      const payLoad = this.deCode(resp.credential);    
+      this.pass = payLoad.sub+payLoad.sub;
+      this.authService.signup(payLoad.given_name, payLoad.email,this.pass,"google").subscribe(
+        (response) => {
+          this.router.navigate(['/dashboard']).then(() => {
+            this.authService.login(payLoad.email, this.pass).subscribe((response) => {
+              this.router.navigate(['/dashboard']).then(() => {
+                console.log('Successfully logged in!');
+              });
+            });
+          });
+        },
+      );
+      this.authService.login(payLoad.email, this.pass).subscribe((response) => {
+        this.router.navigate(['/dashboard']).then(() => {
+          console.log('Successfully logged in!');
+        });
+      });
     }
   }
 }

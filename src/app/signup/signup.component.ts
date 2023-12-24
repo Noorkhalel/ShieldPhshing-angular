@@ -1,13 +1,15 @@
-import { Component, ElementRef, ViewChild} from '@angular/core';
+declare var google: any;
+import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
   nameInput: string = '';
   emailInput: string = '';
   passwordInput: string = '';
@@ -26,10 +28,26 @@ export class SignupComponent {
   errorMessagePassword: string='';
   match: string = '';
   errorpasswordMatch: string='';
-  constructor(
-    private http: HttpClient,
-    private router: Router
-    ) { }
+  constructor(private authService: AuthService, private router: Router) {
+    // Redirect to dashboard if user is already authenticated
+    if (this.authService.getAccessToken()) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
+  ngOnInit(): void {
+    google.accounts.id.initialize({
+      client_id: '255467973370-inpe88bijhgbjk230q8bqj1rbtqaopmu.apps.googleusercontent.com',
+      callback: (resp:any)=> this.handleLogin(resp)
+    });
+
+    google.accounts.id.renderButton(document.getElementById("google-btn"),{
+      
+      size: 'large',
+      shape: 'rectangle',
+      width: "800",
+      signup_with:"Sign up with Google"
+    });
+  }
   errorData: { error: string } | undefined;
   ///
   input1Value: string = '';
@@ -67,9 +85,7 @@ export class SignupComponent {
         }else if(!this.isChecked){
           this.erroragree = 'Please agree to the terms of service to register';
         }else{
-          const requestBody = { "username": this.nameInput, "email": this.emailInput,"password": this.passwordInput };
-          this.http.post<JSON>(this.apiUrl, requestBody, { responseType: 'json' })
-            .subscribe(
+          this.authService.signup(this.nameInput, this.emailInput,this.passwordInput ,"normal").subscribe(
               (response) => {
                 this.responseData = response;
                 this.router.navigate(["/login"]);
@@ -162,5 +178,31 @@ export class SignupComponent {
     if(!this.isChecked){this.erroragree = '';}
   }
 
-  
+  private deCode(t : string){
+    return JSON.parse(atob(t.split(".")[1]));
+  }
+
+  private pass: string = '';
+  handleLogin(resp:any){
+    if(resp){
+      const payLoad = this.deCode(resp.credential);    
+      this.pass = payLoad.sub+payLoad.sub;
+      this.authService.signup(payLoad.given_name, payLoad.email,this.pass,"google").subscribe(
+        (response) => {
+          this.router.navigate(['/dashboard']).then(() => {
+            this.authService.login(payLoad.email, this.pass).subscribe((response) => {
+              this.router.navigate(['/dashboard']).then(() => {
+                console.log('Successfully logged in!');
+              });
+            });
+          });
+        },
+      );
+      this.authService.login(payLoad.email, this.pass).subscribe((response) => {
+        this.router.navigate(['/dashboard']).then(() => {
+          console.log('Successfully logged in!');
+        });
+      });
+    }
+  }
 }

@@ -39,7 +39,13 @@ export class AuthService {
       })
     );
   }
-
+  signup(username:string, email: string, password: string,user_type:string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, { username, email, password ,user_type }).pipe(
+      tap((response) => {
+        console.log(response.massage)
+      })
+    );
+  }
   refreshToken(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/token/refresh`).pipe(
       tap((response) => {

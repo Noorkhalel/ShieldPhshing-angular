@@ -49,7 +49,7 @@ export class HomeComponent {
   apiUrl = 'http://127.0.0.1:5001/api/v1/Ai/Check';
   inputUrl: string | undefined;
   responseData: ApiResponse | undefined;
-  secretkey = 'Olk9ZWKmXEpXVPOVFxOSgmFQaUFYsFMkw7i30ByIsUHykjMhnK'
+  secretkey = 'oY3VkOMkrAmlu3msYcKsGJB4CDetMRzRyCM3F8olQRfhLUsMWY'
   constructor(private http: HttpClient) { }
   
   displayTextMessage: string = '';
