@@ -1,1 +1,124 @@
-<h3>apiscreen works!</h3>
+
+<div class="container pt-120">
+    <p class="font-size-title">SafeSiteDetect API User Guide</p>
+    <p class="title">Introduction</p>
+    <p>Welcome to the SafeSiteDetect API, your ultimate solution for 
+        comprehensive website safety and security analysis.
+         This user guide is designed to help developers seamlessly
+          integrate SafeSiteDetect into their applications. The API
+           empowers developers to assess potential risks and threats
+            associated with any given URL, covering aspects such as 
+            malware detection, phishing risk assessment, and vulnerability 
+            analysis.</p>
+            
+    <p class="title">API Overview</p>
+    <p>SafeSiteDetect is a cutting-edge API that ensures the safety and 
+        security of websites. Before you begin integrating the API 
+        into your application, it's essential to understand the key
+         features, obtain the necessary API key, and familiarize yourself 
+         with the secure authentication process.</p>
+
+    <p class="title">Key Features</p>
+    <div><span class="sub-title">Malware Detection:</span> Utilize SafeSiteDetect to conduct thorough scans for known malware, ensuring a reliable assessment of potential threats.</div>
+    <div><span class="sub-title">Phishing Risks:</span>  Leverage our API's advanced analysis capabilities to identify and mitigate phishing risks effectively.</div>
+    <div><span class="sub-title">Vulnerability Assessment:</span> Stay ahead of potential vulnerabilities with SafeSiteDetect, which evaluates websites for common security weaknesses.</div>
+
+    <p class="title">Authentication</p>
+    <p>To use the SafeSiteDetect API, 
+        secure your requests by authenticating with the provided API key. 
+        Include the API key in the header of your HTTP requests as demonstrated below:</p>
+    
+    <div class="d-flex justify-content-center">
+        <div class="card">
+            <div class="titlebar">
+                <span class="buttons">
+                <button (click)="copypythonCode()" class="close">
+                    <svg class="close" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                      </svg>
+                </button>
+                </span>
+              </div>
+            <div class="cppcode">
+            <pre id="pre"><code>
+<span class="sc">import</span> <span class="s1">requests</span>
+
+<span class="s3">url</span>=<span class="s4"> "http://SafeSiteDetect.com/api/v1/Ai/Check" </span>
+            
+<span class="s3">payload = </span><span class="s6">{{ '{' }}</span>
+    <span class="s3">"url"</span><span class="s3">:</span> <span class="s4">"https://www.example.com/"</span><span class="s3">,</span> 
+    <span class="s3">"secretkey"</span><span class="s3">:</span> <span class="s4">"your_api_key"</span>
+<span class="s6">{{ '}' }}</span>
+    
+<span class="s3">headers = </span><span class="s6">{{ '{' }}</span>
+    <span class="s3">"Content-Type"</span><span class="s3">:</span> <span class="s2">"application/json"</span><span class="s3">,</span> 
+<span class="s6">{{ '}' }}</span>
+                
+<span class="s3">response = <span class="s1">requests</span>.<span class="s7">post</span><span class="s6">(</span>url<span class="s5">,</span> json<span class="s5">=</span>payload, headers<span class="s5">=</span>headers<span class="s7">)</span></span>
+    
+<span class="sc">if</span><span> response.status_code ==</span><span class="curlies"> 200</span><span >:</span>
+    <span>json_data = response.json()</span>
+    <span class="s6">print</span>(<span class="s2">"API Response:"</span>, json_data)
+<span class="sc">else</span><span >:</span>
+    <span class="s6">print</span>(<span class="s2">f"Error: {{'{}'}}response.status_code{{'}'}}"</span>)
+    <span class="s6">print</span>(<span class="s2">"Error Details:"</span>, response.text)
+            </code></pre>
+            </div>
+        </div>
+    </div>
+          
+<p class="title">Sample JSON Data</p> 
+<p>Explore an example of the JSON data available in the response:</p>
+<div class="d-flex justify-content-center">
+    <div class="card">
+        <div class="titlebar">
+            <span class="buttons">
+            <button class="close" (click)="copyJsonCode()">
+                <svg class="close" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                  </svg>
+                </button>
+            </span>
+          </div>
+        <div class="cppcode">
+        <pre id="pre"><code>
+{{'{'}}
+<span class="s3">"data"</span>:{{'{'}}
+    <span class="s3">"country"</span>: <span class="s4">"Toronto, Ontario, CA"</span>,
+    <span class="s3">"description"</span>: <span class="s4">"The URL is legitimate"</span>,
+    <span class="s3">"hostname"</span>: <span class="s4">"www.example.com"</span>,
+    <span class="s3">"ip_address"</span>: <span class="s4">"172.67.38.181"</span>,
+    <span class="s3">"online"</span>: <span class="s4">"Yes"</span>,
+    <span class="s3">"url"</span>: <span class="s4">"https://www.example.com/"</span>,
+    <span class="s3">"verified"</span>: <span class="s4">"Yes"</span>
+    {{'}'}}
+{{'}'}}
+        </code></pre>
+        </div>
+    </div>
+</div>
+
+<p class="title">Detailed Explanation</p>
+<p class="sub-title">Rate Limits</p>
+<p>Ensure you are aware of the API rate limits to optimize your usage and prevent any disruptions.
+     It's recommended to review the rate limits section in the official documentation for more details.</p>
+<p class="sub-title">Webhooks</p>
+<p>Explore the option of setting up webhooks to receive real-time notifications for specific events or analysis results.
+     Webhooks enable you to stay informed about changes in the security status of the analyzed URLs.</p>
+<p class="sub-title">Customization</p>
+<p>Tailor your integration based on specific requirements by leveraging optional parameters available in API requests.
+     Customization allows you to fine-tune the analysis process according to your application's needs.</p>
+<p class="title">Get Your API Key</p>
+To get your API key and start using the SafeSiteDetect API, click the button below:
+<a href="/signup">Get API Key</a>
+<p class="title">Conclusion</p>
+<p>Thank you for choosing SafeSiteDetect! This user guide provides
+     you with the information needed to seamlessly integrate the 
+     API into your applications. For additional assistance or inquiries,
+      our dedicated support team is ready to assist at [<a href="/about">support@safesitedetect.com</a>].</p>
+<p>We are excited to see the secure online experiences you create with the SafeSiteDetect API!</p>
+
+
+</div>
+
+<app-footeer-home></app-footeer-home>

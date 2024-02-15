@@ -1,0 +1,124 @@
+<div class="container p-0">
+    <h1 class="h3 mb-3">Settings</h1>
+    <div class="row">
+    <div class="col-md-5 col-xl-4">
+    <div class="card">
+    <div class="card-header">
+    <h5 class="card-title mb-0">Profile Settings</h5>
+    </div>
+    <div class="list-group list-group-flush" role="tablist">
+        <div (click)="changeAccountBar()" class="list-group-item list-group-item-action cursor-pointer" [ngClass]="{'active': !chagepass}"data-toggle="list" href="/dashboard/settings/profile" role="tab">
+            Account
+            </div>
+            <div (click)="changePassBar()" [ngClass]="banUserPassword" class="list-group-item list-group-item-action cursor-pointer"[ngClass]="{'active': chagepass}"  data-toggle="list"  role="tab">
+            Password
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-7 col-xl-8">
+    <div class="tab-content">
+    <div class="tab-pane fade show active" id="account" role="tabpanel">
+    <div *ngIf="!chagepass" class="card">
+    <div class="card-header">
+    <div class="card-actions float-right">
+    <div class="dropdown show">
+  
+    <div class="dropdown-menu dropdown-menu-right">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+    </div>
+    </div>
+    <h5 class="card-title mb-0">Public info</h5>
+    </div>
+    <div class="card-body">
+    <form>
+    <div class="row">
+    <div class="col-md-8">
+    <div class="form-group">
+    <label for="inputUsername">Username</label>
+    <div *ngIf="!chageName" class="text-font">{{username}} <svg (click)="changeName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square icon-gov" viewBox="0 0 16 16">
+        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+      </svg></div>
+      <input *ngIf="chageName"  [(ngModel)]="newUsername" name="inputUsername" type="text" class="form-control" id="inputUsername" placeholder="Username">
+      <div class="loader" *ngIf="showLog"></div>
+      <div class="error-name text-danger" *ngIf="errorMessage && chageName">*{{errorMessage}}</div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="text-center">
+        <div class="picture">
+            <div class="first-le">
+                 {{fistLeName}}
+            </div>
+          </div>
+    <div class="mt-2">
+    </div>
+    </div>
+    </div>
+    </div>
+    <button *ngIf="chageName" (click)=" updateUsername()"  type="button" class="btn btn-primary m-1">Save changes</button>
+    
+    <button *ngIf="chageName" (click)="changeName()" type="button" class="btn btn-secondary">Cancel</button>
+    </form>
+    </div>
+    </div>
+    </div>
+    <div *ngIf="!chagepass" class="card">
+        <div class="card-header">
+        <h5 class="card-title mb-0">Private info</h5>
+        </div>
+        <div class="card-body">
+        <form>
+        <div class="form-row">
+        <div class="form-group">
+        <label for="inputFirstName">Email</label>
+        <div class="text-font">{{email}}</div>
+        </div>
+        <div class="form-group">
+        <label for="inputLastName">APIs key</label>
+        <div class="text-font">{{apikey}} <svg (click)="copyHeroName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy icon-gov" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+          </svg>
+        </div>  
+        </div>
+        </div>
+        </form>
+        </div>
+        </div>
+    <div *ngIf="chagepass" id="password" role="tabpanel">
+    <div class="card">
+    <div class="card-body">
+    <h5 class="card-title">Password</h5>
+    <form #passwordForm="ngForm">
+      <div class="form-group m-3">
+        <label for="inputPasswordCurrent">Current password</label>
+        <input type="password" [(ngModel)]="oldPass" name="inputPasswordCurrent" class="form-control" id="inputPasswordCurrent" required>
+      </div>
+      <div class="form-group m-3">
+        <label for="inputPasswordNew">New password</label>
+        <input type="password" [(ngModel)]="newPass" name="inputPasswordNew" class="form-control" id="inputPasswordNew" required>
+      </div>
+      <div class="form-group m-3">
+        <label for="inputPasswordNew2">Verify password</label>
+        <input type="password" name="inputPasswordNew2" ngModel class="form-control" id="inputPasswordNew2" required>
+      </div>
+      <div *ngIf="passwordForm.controls['inputPasswordNew']?.errors?.['required'] && passwordForm.controls['inputPasswordNew2']?.errors?.['required']" class="text-danger">
+        Password is required.
+      </div>
+      <div *ngIf="newPass !== passwordForm.controls['inputPasswordNew2']?.value && passwordForm.controls['inputPasswordNew2']?.touched" class="text-danger">
+        Passwords do not match.
+      </div>
+      <button [disabled]="passwordForm.invalid" (click)="updatePassword()" type="button" class="btn btn-primary m-3">Save changes</button>
+    </form>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div> 

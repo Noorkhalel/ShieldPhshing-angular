@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-
+interface SideNavToggle{
+  ScreenWidth: number;
+  collapsed: boolean;
+}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -22,7 +25,12 @@ export class DashboardComponent {
     this.router.navigate(['/home']);
   }
 
-
+  isSideNavCollapsed = false;
+  ScreenWidth = 0;
+  onToggleSideNav(data: SideNavToggle): void{
+    this.ScreenWidth = data.ScreenWidth;
+    this.isSideNavCollapsed = data.collapsed;
+  }
   ngOnInit(): void {
     const accessToken = this.authService.getAccessToken();
 
@@ -45,7 +53,6 @@ export class DashboardComponent {
         error: (error) => {
           console.error('Dashboard request failed:', error);
           this.message = 'Dashboard request failed';
-          // Handle error, show user-friendly message, etc.
         }
       });
   }

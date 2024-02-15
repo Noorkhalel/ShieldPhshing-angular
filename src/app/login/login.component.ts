@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit{
       width:360
     });
   }
-
+  errorLoginMessage = '';
   login() {
     this.authService.login(this.email, this.password).subscribe(
       (response) => {
@@ -41,9 +41,11 @@ export class LoginComponent implements OnInit{
         });
       },
       (error) => {
+        this.errorLoginMessage = 'The email or password wrong'
         console.error(error);
       }
     );
+
   }
 
   private deCode(t : string){

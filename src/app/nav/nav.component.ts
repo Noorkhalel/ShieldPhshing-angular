@@ -16,6 +16,9 @@ export class NavComponent implements OnInit{
   isLoginPage(): boolean {
     return this.router.url === '/login';
   }
+  isSginUpPage(): boolean {
+    return this.router.url === '/signup';
+  }
   NavHidd(){
     this.NavShow = false;
   }
@@ -29,9 +32,9 @@ export class NavComponent implements OnInit{
     
   }
   updateNavVisibility() {
-    // Check the current route and update NavShow accordingly
     this.NavShow = !this.router.url.includes('/login');
     this.NavShow = !this.router.url.includes('/signup');
+    this.NavShow = !this.router.url.includes('/dashboard');
   }
   ScreenWidth: number | undefined;
   collapsed = true;

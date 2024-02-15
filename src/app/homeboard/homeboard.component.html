@@ -1,0 +1,334 @@
+
+<div class="bg-primary height-100 pp-t">
+<h1 class="p-5 text-white">
+ <i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
+</svg></i> Multiple layers
+<h6 class="p-5 text-white">Detect. Protect. Secure. Report.
+  <h6 class=" text-white">Multiple layers of examination using machine learning</h6>
+</h6>
+
+</h1>
+</div>
+
+  <div class="container card">
+    <div class="card-body row">
+      <div class="col">
+        <h4 class="p-4 text-primary screen-text-size">Welcome to SiteDetect!</h4>
+        <h6 class="pl-4 screen-text-size-2">We identify and expose scam sites in real time, ensuring your online experience is secure. Your safety is our priority – welcome to a scam-free digital journey!</h6>
+      </div>
+      <div class="col image-bg">
+
+      </div>
+    </div>
+  </div>
+  
+<div class="container p-4 card">
+    <h5 class="p-4 text-primary">Website Checks Multi-layer AI</h5>
+    <div class="row">
+        <div class="card-body input-group">
+            <input type="text" class="form-control rounded"  [(ngModel)]="textInput" placeholder="Enter a URL: www.example.com" />
+            <button
+            (click)="getAiResult()"
+            type="button"
+            class="btn btn-outline-primary"
+            data-mdb-ripple-init>SCAN</button>
+        </div>
+    </div>
+    <div class="load d-flex justify-content-center" *ngIf="isLoading">
+      <span class="loader"></span>
+    </div>
+    <div *ngIf="results3 && results && !isLoading" class="row p-4">
+        <div class="col-md-3 col-xl-3">
+          <div></div>
+                <div class="thermostat d-non">
+                      <div [ngClass]="bgcolor">
+                          <div class="bottom_overlay"></div>
+                      </div>
+                  <div class="control">
+                          <div class="temp_room">{{cuont_the_detection}}</div>
+                          <div class="room">/10</div>
+                      </div>
+                </div>
+        </div>
+        <div class="col-md-9 col-xl-9">
+            <div class="card">
+                <div class="card-header">
+                <h5 class="card-title mb-0 d-flex  text-inf justify-content-between">
+                    <div [ngClass]="colorResult"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                      </svg>  {{cuont_the_detection}} {{theTextResuls}}</div>
+                    <div class="text-Reanalyze" 
+                    (click)="getAiResult()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                    </svg> Reanalyze
+                    </div>
+                </h5>
+                </div>
+                <div class="p-3 text-inf row">
+                    <div class="col">
+                        <div class="p-2 whidth">{{url_scan}}</div>
+                        <div class="p-2">{{hostname}}</div>
+                    </div>
+                    <div class="col">
+                        <div class="P-2">Status</div>
+                        <div class="P-2" *ngIf="online === '200'" class="text-success">online</div>
+                        <div class="P-2" *ngIf="online === '404'" class="text-danger">offline</div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+    <div *ngIf="results3 && results && !isLoading" class="row mb-4">
+        <div class="col">
+            <ul class="nav nav-tabs flex-nowrap topnav">
+                <li class="nav-item">
+                    <a (click)="linkMoveDetection()" [ngClass]="{'active': activeLink === 'DETECTION'}" class="nav-link p-2 px-4 hstack gap-2 cursor-pointer">
+                        <samp>DETECTION</samp>
+                        <div class="blue-line"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a (click)="linkMoveDetails()" [ngClass]="{'active': activeLink === 'DETAILS'}" class="nav-link p-2 px-4 hstack gap-2 active cursor-pointer">
+                        <samp>DETAILS</samp>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="!linkMove && results3 && results && !isLoading" class="row mb-4">
+      <div class="col p-2">
+        <div class="nav-tabs"></div>
+        <div class="p-2 text-inf"> Security vendors' analysis <i><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+          </svg></i> (The page whose URLs you copied)</div>
+        <div class="nav-tabs"></div>
+          <div *ngIf="results3" class="p-1 text-table">
+            <table class="borda">
+              <tr *ngFor="let result3 of results3 | keyvalue">
+                <td>
+                  <div class="d-flex justify-content-between">
+                    <p *ngIf="result3.key !== 'error'" class="col-6">{{ result3.key }}</p>
+                      <div *ngIf="result3.key === 'error'" class="error-message">
+                        <p  class="col-6 text-inf-danger error-text">
+                          <i class="text-danger"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16">
+                            <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+                          </svg></i>
+                          <span class=""> This web page cannot be scanned</span>
+                        </p>
+                      </div>
+                    <p class="col-6">
+                      <i *ngIf="result3.value === 'phishing site'" class="bi bi-exclamation-circle text-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                        </svg></i>
+                        <span *ngIf="result3.value === 'phishing site'" class="text-danger"> Phishing </span>
+                      <i *ngIf="result3.value === 'clean site'" class="bi bi-check-circle text-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                          <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                        </svg></i>
+                        <span *ngIf="result3.value === 'clean site'" class="text-success"> Clean </span>
+
+                        <i *ngIf="result3.value === 'malicious site'" class="bi bi-exclamation-circle text-danger">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                          </svg></i>
+                          <span *ngIf="result3.value === 'malicious site'" class="text-danger"> Malicious </span>
+
+                          <i *ngIf="result3.value === 'malware site'" class="bi bi-exclamation-circle text-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                              <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                            </svg></i>
+                            <span *ngIf="result3.value === 'malware site'" class="text-danger"> Malware </span>
+                            
+                          <i *ngIf="result3.value === 'unrated site'" class="bi bi-exclamation-circle text-warning">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                              <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                            </svg></i>
+                            <span *ngIf="result3.value === 'unrated site'" class="text-warning"> Unrated </span>
+                            <!-- {{result3.value}} -->
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+      </div>
+  </div>
+  <div *ngIf="!linkMove && results3 && results && !isLoading"  class="row mb-4">
+    <div class="col p-2">
+      <div class="nav-tabs"></div>
+      <div class="p-2 text-inf"> Security vendors' analysis <i><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+        </svg></i> (host Name)</div>
+      <div class="nav-tabs"></div>
+        <div class="p-1 text-table">
+          <table class="borda">
+            <tr *ngFor="let result of results | keyvalue">
+              <td>
+                <div *ngIf="handle_erorr">{{handle_erorr}}</div>
+                <div class="d-flex justify-content-between">
+                  <p *ngIf="result.key !== 'error'" class="col-6">{{ result.key }}</p>
+                  <div *ngIf="result.key === 'error'" class="error-message">
+                    <p  class="col-6 text-inf-danger error-text">
+                      <i class="text-danger"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16">
+                        <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+                      </svg></i>
+                      <span class=""> This web page cannot be scanned</span>
+                    </p>
+                  </div>
+                  <p class="col-6">
+                    <i *ngIf="result.value === 'phishing site'" class="bi bi-exclamation-circle text-danger">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                      </svg></i>
+                      <span *ngIf="result.value === 'phishing site'" class="text-danger"> Phishing </span>
+                    <i *ngIf="result.value === 'clean site'" class="bi bi-check-circle text-success">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                      </svg></i>
+                      <span *ngIf="result.value === 'clean site'" class="text-success"> Clean </span>
+
+                      <i *ngIf="result.value === 'malicious site'" class="bi bi-exclamation-circle text-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                        </svg></i>
+                        <span *ngIf="result.value === 'malicious site'" class="text-danger"> Malicious </span>
+
+                        <i *ngIf="result.value === 'malware site'" class="bi bi-exclamation-circle text-danger">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                          </svg></i>
+                          <span *ngIf="result.value === 'malware site'" class="text-danger"> Malware </span>
+                          
+                        <i *ngIf="result.value === 'unrated site'" class="bi bi-exclamation-circle text-warning">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                          </svg></i>
+                          <span *ngIf="result.value === 'unrated site'" class="text-warning"> Unrated </span>
+                          <!-- {{result.value}} -->
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+    </div>
+</div>
+  <div *ngIf="linkMove && !isLoading" class="row mb-4">
+    <div class="col p-2">
+        <div class="nav-tabs"></div>
+        <div class="p-2 text-inf"> HTTP Response <i><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+          </svg></i></div>
+        <div class="nav-tabs"></div>
+        <div class="p-2">
+          <div class="text-inf">Final URL</div>
+          <div class="infotext">{{url_scan}}</div>
+        </div>
+        <div class="p-2">
+          <div class="text-inf">Serving IP Address</div>
+          <div class="infotext">{{ip_address}}</div>
+        </div>
+        <div class="p-2">
+          <div class="text-inf">online</div>
+          <div *ngIf="online === '200'" class="infotext text-success">Yes</div>
+          <div *ngIf="online === '404'" class="infotext text-danger">No</div>
+        </div>
+  </div>
+</div>
+<div *ngIf="linkMove && !isLoading" class="row mb-4">
+  <div class="col p-2">
+      <div class="nav-tabs"></div>
+      <div class="p-2 text-inf"> URLs Analysis <i><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+        </svg></i></div>
+      <div class="nav-tabs"></div>
+      <div class="p-2">
+          <div class="text-inf">Location</div>
+          <div class="infotext">{{country}}</div>
+      </div>
+  </div>
+</div>
+<div *ngIf="linkMove && !isLoading" class="row mb-4">
+  <div class="col p-2">
+      <div class="nav-tabs"></div>
+      <div class="p-2 text-inf"> History <i><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+        </svg></i></div>
+      <div class="nav-tabs"></div>
+      <div class="p-2">
+        <div class="text-inf">Analysis date</div>
+        <div class="infotext">{{data}}</div>
+      </div>
+  </div>
+</div>
+<div *ngIf="linkMove && !isLoading" class="row mb-4">
+  <div class="col p-2">
+      <div class="nav-tabs"></div>
+      <div class="p-2 text-inf"> Outgoing links <i><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+        </svg></i></div>
+      <div class="nav-tabs"></div>
+      <div class="p-2">
+        <div class="infotext">
+          <p *ngFor="let link of outgoingLinks">{{ link }}</p>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="linkMove && !isLoading" class="row mb-4">
+  <div class="col p-2">
+      <div class="nav-tabs"></div>
+      <div class="p-2 text-inf"> URLs Analysis <i><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+        </svg></i></div>
+      <div class="nav-tabs"></div>
+  </div>
+</div> -->
+<!-- <div *ngIf="!isLoading" class="row mb-4">
+  <div class="p-2">
+    <div class="cc col-sm">
+      <div id="divChart">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>    
+  </div>
+</div> -->
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="cc col-sm">
+            <div id="divChart">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <div class="cc col-sm">
+            <div id="divChart">
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+

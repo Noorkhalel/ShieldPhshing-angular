@@ -1,1 +1,72 @@
-<h3>about works!</h3>
+<div class="heading">
+    <h1>About Us</h1>
+    <p>We are a group of computer science students working on our graduation project.</p>
+</div>
+<div class="container">
+    <section class="about">
+        <div class="about-image">
+            <img src="assets\6_innovation01.jpg">
+                </div>
+        <div class ="about-content">
+            <h2> Our Graduation Project </h2>
+            <p> This project is the culmination of our studies, and we are dedicated to developing innovative solutions in the field of phishing detection.<br> Your support and feedback mean a lot to us!</p>
+        </div>
+    </section> 
+</div>
+<section class="Contact">
+    <h1>Contact Us</h1>
+</section>
+
+<section class="location">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13540.248780469072!2d35.16355301854175!3d31.95920937107768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d2bf5d33c13f3%3A0x4293b4ea8be2cf6e!2sBirzeit%20University!5e0!3m2!1sen!2s!4v1705494084290!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></section>
+
+<section class="contact-us">
+<div class="row">
+<div class="contact-col">
+    <div>
+        <i class="fa fa-home"></i>
+        <span>
+            <h5> Birzeit University</h5>
+            <p> Ramallah, Palestine</p>
+        </span>
+    </div>
+    
+    <div>
+        <i class="fa fa-phone"></i>
+        <span>
+            <h5> +972 5222222</h5>
+            <p> Sunday to Thursday , 9AM to 4PM</p>
+        </span>
+    </div>
+    <div>
+        <i class="fa fa-envelope"></i>
+        <span>
+            <h5>support@safesitedetect.com</h5>
+            <p> Email us </p>
+        </span>
+    </div> 
+</div>
+
+<div class="contact-col">
+
+    <form [formGroup]="myForm">
+        <input type="email" formControlName="email" placeholder="Enter email address">
+        <textarea rows="8" formControlName="message" placeholder="Message"></textarea>
+        <button type="submit" [disabled]="myForm.invalid" (click)="onSubmit()" class="hero-btn blue-btn">Send Message</button>
+        <i class="text-success" *ngIf="done">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+              </svg>
+        </i>
+    </form>
+      
+      
+    
+      
+      
+</div>
+</div>
+
+</section>
+
+<app-footeer-home></app-footeer-home>

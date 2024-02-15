@@ -1,0 +1,40 @@
+<div class="head" [ngClass]="getHeadClass()">
+    <div class="head-content">
+        <div class="head-content-left">
+            <div class="tite-name">SiteDetect</div>
+            <div class="tite-rut">Welcome, {{username}}</div>
+        </div>
+        <div class="head-content-right">
+            <div class="head-user-avatar-container">
+                <div class="head-user-avatar">
+                    <div (click)="clickToName()" class="avatar-first-letter">
+                        <div>{{fistLeName}}</div>
+                    </div>
+                    <div *ngIf="!show">
+                        <div class="headdin-profil">
+                            <div *ngFor="let data of userItme">
+                                <a href="" class="nav-item nav-link" [routerLink]="[data.routerLink]" 
+                                routerLinkActive="active"
+                                [routerLinkActiveOptions]="{exact:true}">
+                                    <span>{{data.label}}</span>
+                                </a>
+                            </div>
+                            <a><span (click)="logout()">Log out</span></a>
+                        </div>
+                    </div>
+                    <div class="circle-ind pulse">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #userOverlay>
+    <div class="overlay Overlay-user Overlay-fall" cdMenu>
+        <ul>
+            <li>
+            </li>
+        </ul>
+    </div>
+</ng-template>

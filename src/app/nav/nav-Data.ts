@@ -1,12 +1,9 @@
 export const navDataBar = [
     {
         routerLink: 'home',
-        label:'home'
+        label:'Home'
     },
-    {
-        routerLink: 'queckcheckhome',
-        label:'Queck Check'
-    },
+
     {
         routerLink: 'apiscreen',
         label:'APIs'

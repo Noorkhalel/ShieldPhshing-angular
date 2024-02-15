@@ -1,0 +1,193 @@
+
+.sidenav{
+    background: #263238;
+    transition: all .5s ease;
+    position: fixed;
+    z-index: 2;
+    top:0;
+    width: 5rem;
+    height: 100vh;
+    box-sizing: 0.063rem 0 1.25rem 0 #8690a3;
+  }
+  .logo-container{
+    display: flex;
+    align-items: center;
+    padding: 0.938rem 0.938rem 0 0.938rem;
+    width: 100%;
+    .logo{
+      background: white;
+      text-align: center;
+      width: 3rem;
+      min-width: 3rem;
+      border-radius: 0.31rem;
+      padding: 0.31rem;
+      font-size: 24px;
+      font-weight: 900;
+      cursor: pointer;
+      border: none;
+    }
+    .logo-text{
+      margin-left: 1.5rem;
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .btn-close{
+      margin-left: auto;
+      cursor: pointer;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      background-color: transparent;
+      border: none;
+  
+      .fa-times{
+        color: white;
+        font-size: 24px;
+      }
+    }
+  }
+  
+  .sidenav-collapsed{
+    width: 17rem;
+  }
+  
+  .sidenav-nav{
+    list-style: none;
+    padding: 0.94rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    cursor: pointer;
+  
+    .sidenav-nav-item{
+      width: 100%;
+      margin-bottom: 0.63rem;
+  
+      .sidenav-nav-link{
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        color: #f3f3f2;
+        text-decoration: none;
+        transition: all .3s ease;
+        border-radius: 0.62rem;
+        .sidenav-link-icon{
+          font-size: 22px;
+          width: 2rem;
+          min-width: 2rem;
+          margin: 0 0.5rem;
+          text-align: center;
+        }
+        
+        .sidenav-link-text{
+          margin-left: 1.5rem;
+        }
+      }
+      .sidenav-nav-link:hover{
+        background-color: white;
+        color: #000;
+        .menu-collapse-icon{
+          color: #000;
+        }
+      }
+    }
+    // .sidenav-nav-item:hover{
+      
+    // }
+  }
+  
+  .active{
+    background: white;
+  
+    .menu-collapse-icon,
+    .sidenav-link-icon,
+    .sidenav-link-text{
+      color:black;
+    }
+  }
+  
+  .active-sublevel{
+    color: #f3f3f2 !important;
+    // opacity: 1 !important;
+  
+  }
+  
+  .menu-collapse-icon{
+    font-size: 25px;
+    width: 2rem;
+    min-width: 2rem;
+    margin: auto 0.5rem auto auto;
+    color: #f7f6f6;
+  }
+  
+  .sublevel-nav{
+    list-style: none;
+    margin-left: 10px;
+    .sublevel-nav-item{
+      .sublevel-nav-link{
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        color: #868484;
+        text-decoration: none;
+        border-radius: 0.63rem;
+        transition: all .3s ease;
+        .sublevel-link-icon{
+          font-size: 4px;
+          width: 2rem;
+          min-width: 2rem;
+          margin: 0 0.5rem;
+          text-align: center;
+        }
+        .sublevel-link-text{
+          margin-left: 0.8rem;
+        }
+      }
+      .sublevel-nav-link:hover{
+        color: #f3f3f2;
+        
+      }
+    }
+  }
+  
+  //scrollbar
+  
+  .scrollwrap{
+    overflow-y: auto;
+    visibility: hidden;
+    height: calc(100% - 3.7rem);
+  }
+  
+  .sidenav-nav,
+  .scrollwrap:hover,
+  .scrollwrap:focus{
+    visibility: visible;
+  }
+  
+  .scrollwrap-delayed{
+    transition: visibility 0.5s 0.2s;
+  }
+  .scrollwrap-delayed:hover{
+    transition: visibility 0.2s 0.2s;
+  }
+  // work in safari and chrome
+  .scrollwrap::-webkit-scrollbar{
+    width: 10px;
+  }
+  
+  .scrollwrap::-webkit-scrollbar-track{
+    background: transparent;
+  }
+  
+  .scrollwrap::-webkit-scrollbar-thumb{
+    background-color: #576a74;
+    border-radius: 20px;
+  }
+  // work in firefox
+  .scrollwrap{
+    scrollbar-width: thin;
+    scrollbar-color: #576a74 transparent;
+  }

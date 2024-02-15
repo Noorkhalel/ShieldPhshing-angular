@@ -15,18 +15,19 @@
               <input [(ngModel)]="password" type="password" id="typePasswordX-2" placeholder="Password" class="input-type form-control form-control-lg" />
             </div>
 
-            <div class="form-check d-flex justify-content-start mb-4">
-              <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-              <label class="form-check-label" for="form1Example3"> Remember password </label>
+            <div class="form-check d-flex justify-content-start mb-4" *ngIf="errorLoginMessage">
+              <label class="form-check-label text-danger"> *{{errorLoginMessage}} </label>
             </div>
-
+            
             <button (click)="login()" class="login-btn all-btn" type="submit">Login</button>
 
             <hr class="my-4">
-
+            <div class="sig-tsxt">Or Log in Using</div>
             <div id="google-btn" class="d-flex justify-content-center"></div>
 
+            <div class="sig-tsxt">I don't have an account,<a href="/signup">here</a></div>
           </div>
+          
         </div>
       </div>
     </div>
